@@ -53,6 +53,7 @@ n_points = 6
 
 data_glyphs <- tibble(pattern=1:100) %>% 
   mutate(
+    # layout_ellipse randomly samples n points from within an ellipse given parameters (coords of focal point, radius, angle, etc.)
     layout = map(pattern, ~ layout_ellipse(n = n_points)),
     plot = map(layout, ~ render_spline(., coord = coord_ellipse))
   )
